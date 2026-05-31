@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guía EXANI I 2026 resuelta del Centro de Artes, Ciencias y Cultura. Material de estudio para ingreso a bachillerato con matemáticas, español, lectura, ciencias, sociales y razonamiento." />
+  <title>Guía EXANI I 2026 Resuelta | Centro de Artes, Ciencias y Cultura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-950: #071d35;
+      --azul-900: #0b2f57;
+      --azul-700: #145ea8;
+      --azul-100: #eaf4ff;
+      --oro: #c89b3c;
+      --verde: #128c7e;
+      --tinta: #172033;
+      --gris: #667085;
+      --linea: #d9e2ec;
+      --suave: #f5f8fc;
+      --blanco: #ffffff;
+      --sombra: 0 24px 65px rgba(8, 35, 63, 0.14);
+      --radio: 26px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--tinta);
+      background: var(--blanco);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+    .section { padding: 84px 0; }
+    .section-soft { background: var(--suave); }
+    .section-dark { background: linear-gradient(135deg, var(--azul-950), var(--azul-900)); color: white; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,.93);
+      border-bottom: 1px solid rgba(217,226,236,.85);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--azul-900), var(--azul-700));
+      color: white;
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .brand strong { display: block; color: var(--azul-950); line-height: 1.1; }
+    .brand small { color: var(--gris); font-size: 12px; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .nav a { text-decoration: none; color: #334155; }
+    .nav a:hover { color: var(--azul-700); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      transition: .2s ease;
+      font-size: 14px;
+      text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--azul-900), var(--azul-700));
+      color: white;
+      box-shadow: 0 14px 30px rgba(20, 94, 168, .24);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(20, 94, 168, .30); }
+    .btn-secondary { background: var(--azul-100); color: var(--azul-900); border-color: #cce3fb; }
+    .btn-ghost { background: white; color: var(--azul-900); border-color: var(--linea); }
+    .btn-whatsapp { background: var(--verde); color: white; }
+    .full { width: 100%; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 86px;
+      background:
+        radial-gradient(circle at 84% 18%, rgba(20, 94, 168, 0.16), transparent 33%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--azul-100);
+      color: var(--azul-700);
+      border: 1px solid #d7ebff;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .eyebrow.gold {
+      color: #8a641d;
+      border-color: #f2dca8;
+      background: #fff8e8;
+    }
+    h1, h2 {
+      margin: 18px 0;
+      color: var(--azul-950);
+      font-family: "Playfair Display", Georgia, serif;
+      line-height: 1.04;
+      letter-spacing: -.04em;
+    }
+    h1 { font-size: clamp(43px, 6.5vw, 76px); }
+    h2 { font-size: clamp(32px, 4.5vw, 52px); }
+    h3 {
+      margin: 12px 0;
+      color: var(--azul-950);
+      line-height: 1.2;
+      font-size: 22px;
+    }
+    .section-dark h2, .section-dark h3 { color: white; }
+    .lead {
+      max-width: 660px;
+      color: #475467;
+      font-size: 19px;
+    }
+    .hero-actions, .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 14px 18px;
+      border: 1px solid #f1ddb0;
+      border-radius: 20px;
+      background: #fffaf0;
+      color: #7a5515;
+      font-weight: 900;
+    }
+    .price-pill strong { font-size: 32px; color: var(--azul-950); letter-spacing: -.03em; }
+    .hero-preview {
+      display: grid;
+      grid-template-columns: .72fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .cover-card, .quick-card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 32px;
+      box-shadow: var(--sombra);
+      padding: 18px;
+    }
+    .cover-card img {
+      border-radius: 22px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid rgba(217,226,236,.9);
+    }
+    .quick-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .quick-card ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .quick-card li, .check-list li {
+      position: relative;
+      padding-left: 28px;
+      color: #344054;
+    }
+    .quick-card li::before, .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #e6f6ee;
+      color: #157347;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .stat {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(8,35,63,.06);
+    }
+    .stat strong { display: block; color: var(--azul-950); font-size: 22px; }
+    .stat span { color: var(--gris); font-size: 13px; }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 34px;
+    }
+    .section-heading p, .muted { color: var(--gris); font-size: 17px; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: var(--radio);
+      padding: 24px;
+      box-shadow: 0 14px 38px rgba(8,35,63,.07);
+    }
+    .card-tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef7ff;
+      color: var(--azul-700);
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .card p, .card li { color: var(--gris); }
+    .card ul { margin: 16px 0 0; padding-left: 18px; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .preview-index {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 32px;
+      padding: 16px;
+      box-shadow: var(--sombra);
+    }
+    .preview-index img {
+      border-radius: 22px;
+      border: 1px solid rgba(217,226,236,.9);
+      width: 100%;
+    }
+    .index-list {
+      display: grid;
+      gap: 12px;
+    }
+    .index-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      border: 1px solid var(--linea);
+      border-radius: 18px;
+      background: white;
+    }
+    .index-item strong { color: var(--azul-950); }
+    .index-item span { color: var(--gris); font-size: 14px; }
+    .index-page {
+      color: var(--azul-700);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .process-card {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      border-radius: var(--radio);
+      padding: 24px;
+    }
+    .process-card span {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.15);
+      color: #dbeeff;
+      font-weight: 900;
+    }
+    .process-card p { color: rgba(255,255,255,.76); }
+    .offer-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 34px;
+      align-items: start;
+    }
+    .price-card {
+      background: white;
+      border: 1px solid #f1ddb0;
+      background: linear-gradient(180deg, #fffdf7, white);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--sombra);
+    }
+    .price {
+      margin: 14px 0;
+      color: var(--azul-950);
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+    .price small {
+      display: block;
+      font-size: 15px;
+      color: var(--gris);
+      letter-spacing: 0;
+      margin-top: 8px;
+    }
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    details {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--azul-950);
+      font-weight: 900;
+    }
+    details p { color: var(--gris); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 44px;
+      align-items: start;
+    }
+    .form {
+      display: grid;
+      gap: 16px;
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 32px;
+      padding: 26px;
+      box-shadow: var(--sombra);
+    }
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--azul-950);
+      font-weight: 900;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      background: #fbfdff;
+      color: var(--tinta);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 3px solid rgba(20, 94, 168, .16);
+      border-color: var(--azul-700);
+    }
+    .notice {
+      border: 1px solid #f1ddb0;
+      background: #fffaf0;
+      color: #725316;
+      border-radius: 18px;
+      padding: 16px;
+      font-size: 14px;
+    }
+    .footer {
+      background: var(--azul-950);
+      color: white;
+      padding: 40px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+    }
+    .footer p, .footer a { color: rgba(255,255,255,.74); }
+    .floating {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      background: var(--verde);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 15px 20px;
+      font-weight: 900;
+      box-shadow: 0 18px 38px rgba(18,140,126,.35);
+    }
+
+    @media (max-width: 980px) {
+      .nav { display: none; }
+      .hero-grid, .feature-grid, .offer-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-preview, .cards-grid, .process-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .section { padding: 62px 0; }
+      .hero { padding-top: 64px; }
+      .brand small { display: none; }
+      .hero-actions, .contact-actions { display: grid; }
+      .hero-preview, .stats, .cards-grid, .process-grid, .footer-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 42px; }
+      .price { font-size: 48px; }
+      .floating { left: 16px; right: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">C</span>
+        <span>
+          <strong>Centro de Artes, Ciencias y Cultura</strong>
+          <small>Preparación para ingreso a bachillerato</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navegación">
+        <a href="#contenido">Contenido</a>
+        <a href="#indice">Índice</a>
+        <a href="#compra">Compra</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-primary" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20comprar%20la%20Gu%C3%ADa%20EXANI%20I%202026." target="_blank" rel="noopener">Comprar guía</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow gold">Guía resuelta 2026 · Nuevo EXANI-I</span>
+          <h1>Guía EXANI I 2026 para ingresar a bachillerato</h1>
+          <p class="lead">
+            Material de estudio del Centro de Artes, Ciencias y Cultura para practicar, revisar respuestas y fortalecer habilidades antes del examen.
+          </p>
+
+          <div class="price-pill">
+            Precio digital editable:
+            <strong>$499</strong>
+            <span>MXN</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20comprar%20la%20Gu%C3%ADa%20EXANI%20I%202026%20digital." target="_blank" rel="noopener">Comprar por WhatsApp</a>
+            <a class="btn btn-secondary" href="#indice">Ver índice</a>
+            <a class="btn btn-ghost" href="#compra">Cómo se entrega</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><strong>693</strong><span>páginas en PDF</span></div>
+            <div class="stat"><strong>9</strong><span>bloques de estudio</span></div>
+            <div class="stat"><strong>2026</strong><span>edición EXANI I</span></div>
+          </div>
+        </div>
+
+        <div class="hero-preview">
+          <div class="cover-card">
+            <img src="assets/guia-exani-i-cover.png" alt="Portada de la Guía EXANI I 2026 resuelta">
+          </div>
+          <div class="quick-card">
+            <div>
+              <span class="eyebrow">Qué incluye</span>
+              <h3>Estudia con método</h3>
+              <p class="muted">Resuelve antes de ver la respuesta, corrige tus errores y usa la guía por bloques.</p>
+            </div>
+            <ul>
+              <li>Práctica inicial</li>
+              <li>Teoría y ejemplos</li>
+              <li>Ejercicios contestados</li>
+              <li>Problemas resueltos</li>
+              <li>Respuestas para verificar</li>
+            </ul>
+            <a class="btn btn-whatsapp full" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20la%20Gu%C3%ADa%20EXANI%20I%202026." target="_blank" rel="noopener">Pedir información</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contenido">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Áreas de estudio</span>
+          <h2>Contenido pensado para preparar el examen por bloques</h2>
+          <p>La guía organiza práctica, explicación y respuestas para que el estudiante avance con una ruta clara.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <span class="card-tag">Matemáticas</span>
+            <h3>Pensamiento matemático</h3>
+            <p>Aritmética, álgebra, geometría, probabilidad, estadística y precálculo.</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">Lectura</span>
+            <h3>Español y comprensión</h3>
+            <p>Ortografía, puntuación, gramática, vocabulario, literatura y comprensión lectora.</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">Ciencias</span>
+            <h3>Naturales y sociales</h3>
+            <p>Física, química, biología, salud, genética, historia, geografía, civismo y ética.</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">Razonamiento</span>
+            <h3>Verbal y matemático</h3>
+            <p>Inferencias, analogías, sucesiones, patrones, progresiones y modelación numérica.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="indice">
+      <div class="container feature-grid">
+        <div>
+          <span class="eyebrow">Índice de estudio</span>
+          <h2>Ruta de trabajo incluida en la guía</h2>
+          <p class="muted">
+            El índice propone iniciar con una práctica diagnóstica, identificar temas débiles y avanzar por bloques. Esto evita estudiar de forma desordenada.
+          </p>
+
+          <div class="index-list">
+            <div class="index-item"><div><strong>Antes de comenzar</strong><span>Ruta de trabajo y recomendaciones de uso.</span></div><div class="index-page">ii</div></div>
+            <div class="index-item"><div><strong>Práctica inicial</strong><span>Cuestionario diagnóstico.</span></div><div class="index-page">1</div></div>
+            <div class="index-item"><div><strong>Pensamiento matemático</strong><span>Aritmética, álgebra, geometría y más.</span></div><div class="index-page">112</div></div>
+            <div class="index-item"><div><strong>Español y lectura</strong><span>Ortografía, gramática, literatura y comprensión.</span></div><div class="index-page">185</div></div>
+            <div class="index-item"><div><strong>Ciencias naturales</strong><span>Física, química, biología, salud y psicología.</span></div><div class="index-page">249</div></div>
+            <div class="index-item"><div><strong>Ciencias sociales</strong><span>Historia, geografía, civismo, filosofía y ética.</span></div><div class="index-page">445</div></div>
+            <div class="index-item"><div><strong>Mundo contemporáneo</strong><span>Ecología, salud, organismos y cultura general.</span></div><div class="index-page">656</div></div>
+            <div class="index-item"><div><strong>Razonamiento verbal y matemático</strong><span>Comprensión, analogías, sucesiones y patrones.</span></div><div class="index-page">673+</div></div>
+          </div>
+        </div>
+
+        <div class="preview-index">
+          <img src="assets/guia-exani-i-indice.png" alt="Vista previa del índice de la Guía EXANI I 2026">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="compra">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Proceso de compra</span>
+          <h2>Compra clara, entrega digital y confirmación por WhatsApp</h2>
+          <p>El proceso está diseñado para verse formal y evitar confusiones al momento de pagar.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <span>01</span>
+            <h3>Solicita la guía</h3>
+            <p>Envía mensaje por WhatsApp indicando que deseas la Guía EXANI I 2026 digital.</p>
+          </div>
+          <div class="process-card">
+            <span>02</span>
+            <h3>Recibe datos de pago</h3>
+            <p>Se envía el monto, método de pago y concepto para identificar tu compra.</p>
+          </div>
+          <div class="process-card">
+            <span>03</span>
+            <h3>Envía comprobante</h3>
+            <p>Comparte tu comprobante y correo electrónico para registrar el envío.</p>
+          </div>
+          <div class="process-card">
+            <span>04</span>
+            <h3>Recibe acceso</h3>
+            <p>La guía se entrega en formato digital al confirmar el pago.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="oferta">
+      <div class="container offer-grid">
+        <div class="price-card">
+          <span class="eyebrow gold">Precio de lanzamiento</span>
+          <h2>Guía digital EXANI I</h2>
+          <p class="price">$499 <small>MXN · precio editable</small></p>
+          <p class="muted">Incluye PDF digital de estudio con índice, práctica inicial, bloques temáticos y respuestas.</p>
+          <a class="btn btn-primary full" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20comprar%20la%20Gu%C3%ADa%20EXANI%20I%202026%20digital%20de%20%24499." target="_blank" rel="noopener">Comprar ahora</a>
+        </div>
+
+        <div class="card">
+          <span class="card-tag">Importante</span>
+          <h3>Qué recibe el estudiante</h3>
+          <ul class="check-list">
+            <li>Guía EXANI I 2026 en formato digital.</li>
+            <li>Contenido organizado por áreas de estudio.</li>
+            <li>Práctica inicial para detectar temas débiles.</li>
+            <li>Respuestas para revisar y corregir errores.</li>
+            <li>Recomendaciones para estudiar por sesiones.</li>
+          </ul>
+          <div class="notice" style="margin-top: 18px;">
+            Este material es una guía de preparación académica. No es un documento oficial de CENEVAL ni garantiza por sí mismo el ingreso; el resultado depende del estudio, la práctica y el desempeño del aspirante.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2>Dudas comunes antes de comprar</h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>¿La guía es digital?</summary>
+            <p>Sí. Esta página está pensada para vender la versión digital. Si también deseas vender versión impresa, se puede agregar una opción adicional.</p>
+          </details>
+          <details>
+            <summary>¿Se entrega inmediatamente?</summary>
+            <p>La entrega se realiza después de confirmar el pago y registrar el correo o medio de envío del comprador.</p>
+          </details>
+          <details>
+            <summary>¿Sirve para EXANI I ingreso a bachillerato?</summary>
+            <p>Sí. La guía está enfocada en preparación para ingreso a bachillerato mediante el Nuevo EXANI-I.</p>
+          </details>
+          <details>
+            <summary>¿Incluye respuestas?</summary>
+            <p>Sí. La guía está presentada como material resuelto y contiene respuestas para verificar el avance.</p>
+          </details>
+          <details>
+            <summary>¿También puedo tomar curso presencial?</summary>
+            <p>Sí. Puedes pedir información sobre cursos presenciales, simuladores y asesorías en el Centro de Artes, Ciencias y Cultura en Colima.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>Compra la guía o pide información del curso</h2>
+          <p class="muted">
+            Centro de Artes, Ciencias y Cultura. Av. Boulevard Camino Real 191, Colima, Colima, a 5 minutos de la Universidad de Colima.
+          </p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20comprar%20la%20Gu%C3%ADa%20EXANI%20I%202026." target="_blank" rel="noopener">Comprar por WhatsApp</a>
+            <a class="btn btn-secondary" href="index.html">Ver cursos presenciales</a>
+          </div>
+        </div>
+
+        <form class="form" id="leadForm">
+          <label>
+            Nombre
+            <input type="text" name="nombre" placeholder="Nombre del comprador" required>
+          </label>
+          <label>
+            Teléfono
+            <input type="tel" name="telefono" placeholder="Ej. 312 000 0000" required>
+          </label>
+          <label>
+            Me interesa
+            <select name="interes" required>
+              <option value="">Selecciona una opción</option>
+              <option>Comprar guía digital EXANI I 2026</option>
+              <option>Curso presencial EXANI I</option>
+              <option>Guía digital y curso presencial</option>
+              <option>Información para padres de familia</option>
+            </select>
+          </label>
+          <label>
+            Mensaje
+            <textarea name="mensaje" rows="5" placeholder="Escribe tu duda o el correo donde quieres recibir información"></textarea>
+          </label>
+          <button class="btn btn-primary full" type="submit">Enviar solicitud por WhatsApp</button>
+          <p class="muted" style="font-size: 14px; margin: 0;">Al enviar, se abrirá WhatsApp con el mensaje listo.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Centro de Artes, Ciencias y Cultura</strong>
+        <p>Preparación EXANI I y EXANI II en Colima.</p>
+      </div>
+      <div>
+        <strong>WhatsApp</strong>
+        <p><a href="tel:+523123039724">312 303 9724</a></p>
+      </div>
+      <div>
+        <strong>Dirección</strong>
+        <p>Av. Boulevard Camino Real 191, Colima, Colima.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating" href="https://wa.me/523123039724?text=Hola%2C%20quiero%20comprar%20la%20Gu%C3%ADa%20EXANI%20I%202026." target="_blank" rel="noopener">Comprar por WhatsApp</a>
+
+  <script>
+    const form = document.getElementById("leadForm");
+    if (form) {
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const data = new FormData(form);
+        const nombre = data.get("nombre") || "";
+        const telefono = data.get("telefono") || "";
+        const interes = data.get("interes") || "";
+        const mensaje = data.get("mensaje") || "";
+        const texto = `Hola, quiero información sobre la Guía EXANI I 2026.%0A%0ANombre: ${encodeURIComponent(nombre)}%0ATeléfono: ${encodeURIComponent(telefono)}%0AInterés: ${encodeURIComponent(interes)}%0AMensaje: ${encodeURIComponent(mensaje)}`;
+        window.open(`https://wa.me/523123039724?text=${texto}`, "_blank", "noopener");
+      });
+    }
+  </script>
+</body>
+</html>

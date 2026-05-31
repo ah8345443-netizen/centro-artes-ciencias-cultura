@@ -1,0 +1,21 @@
+INSTRUCCIONES PARA SUBIR ESTA PAGINA
+
+1. Descomprime este ZIP.
+2. En GitHub, entra al repositorio: centro-artes-ciencias-cultura.
+3. Da clic en Add file > Upload files.
+4. Sube:
+   - guia-exani-i-2026.html
+   - la carpeta assets completa
+5. Da clic en Commit changes.
+6. Vercel actualizará la página automáticamente.
+
+La nueva página quedará en:
+https://TU-DOMINIO.vercel.app/guia-exani-i-2026.html
+
+IMPORTANTE:
+No subas el PDF completo de la guía al repositorio público, porque cualquiera podría descargarlo.
+Esta página solo muestra portada, índice y venta por WhatsApp.
+
+Para cambiar el precio:
+Abre guia-exani-i-2026.html y busca "$499".
+Cambia ese valor por el precio definitivo.
