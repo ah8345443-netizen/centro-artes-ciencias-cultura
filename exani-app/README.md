@@ -2,34 +2,37 @@
 
 Aplicación independiente para el Centro de Artes, Ciencias y Cultura.
 
-## Incluye
-- Inicio
-- Login
-- Panel del alumno
-- Práctica por códigos CL, RI y MT
-- Simulacro
-- Resultados
-- Panel administrativo
-- Estructura inicial de Supabase
-- Políticas RLS
-- Variables de entorno de ejemplo
-
-## Desarrollo local
-1. Instalar Node.js 20 o superior.
-2. Entrar a la carpeta `exani-app`.
-3. Ejecutar `npm install`.
-4. Copiar `.env.example` como `.env.local`.
-5. Agregar URL y clave pública de Supabase.
-6. Ejecutar `npm run dev`.
+## Estado
+- Next.js 16.4 + React 19.3
+- Supabase conectado
+- Auth por correo/contraseña
+- RLS habilitado
+- Práctica por CL, RI y MT
+- Simulacro con registro de intentos
+- Resultados por área
+- Panel administrativo preparado
+- PWA básica
+- GitHub Actions para verificación de build
 
 ## Supabase
-Abrir el SQL Editor del proyecto Supabase y ejecutar `supabase/schema.sql`.
+Proyecto configurado: `exani-colima-2026`.
 
-Después de crear tu usuario, cambia manualmente su rol en `profiles` a `admin` para la primera cuenta administrativa.
+Variables requeridas:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+
+No guardar claves secretas o service role en el repositorio.
+
+## Desarrollo
+1. `npm install`
+2. Crear `.env.local` a partir de `.env.example`
+3. `npm run dev`
 
 ## Vercel
-Configura el Root Directory del proyecto como `exani-app` y agrega:
-- NEXT_PUBLIC_SUPABASE_URL
-- NEXT_PUBLIC_SUPABASE_ANON_KEY
+Crear un proyecto separado apuntando a este mismo repositorio y establecer:
 
-El sitio principal actual del repositorio permanece fuera de esta carpeta y no se modifica.
+**Root Directory:** `exani-app`
+
+Agregar las dos variables públicas de Supabase en Environment Variables.
+
+El sitio principal del Centro permanece en la raíz del repositorio y no debe sustituirse.
