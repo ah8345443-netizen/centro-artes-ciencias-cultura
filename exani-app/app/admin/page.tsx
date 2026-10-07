@@ -16,7 +16,7 @@ type Profile = {
 type Question = {
   id: string;
   code: string;
-  area: "CL" | "RI" | "MT";
+  area: "CL" | "RI" | "MT" | "CI";
   topic_code: string;
   topic_name: string;
   difficulty: number;
@@ -280,7 +280,7 @@ export default function AdminPage() {
       .map((p) => {
         const rows = attempts.filter((a) => a.user_id === p.id);
         const correct = rows.filter((a) => a.is_correct).length;
-        const byArea = ["CL", "RI", "MT"].map((area) => {
+        const byArea = ["MT", "CL", "RI", "CI"].map((area) => {
           const areaRows = rows.filter((a) => a.questions?.[0]?.area === area);
           const areaCorrect = areaRows.filter((a) => a.is_correct).length;
           return {
@@ -405,13 +405,13 @@ export default function AdminPage() {
               <h2>{questionForm.id ? "Editar reactivo" : "Nuevo reactivo"}</h2>
               <div className="form-grid">
                 <label>Código<input required value={questionForm.code} onChange={(e) => setQuestionForm({ ...questionForm, code: e.target.value })} placeholder="MT5-001" /></label>
-                <label>Área<select value={questionForm.area} onChange={(e) => setQuestionForm({ ...questionForm, area: e.target.value as Question["area"] })}><option>CL</option><option>RI</option><option>MT</option></select></label>
+                <label>Área<select value={questionForm.area} onChange={(e) => setQuestionForm({ ...questionForm, area: e.target.value as Question["area"] })}><option>CL</option><option>RI</option><option>MT</option><option>CI</option></select></label>
                 <label>Código de tema<input required value={questionForm.topic_code} onChange={(e) => setQuestionForm({ ...questionForm, topic_code: e.target.value })} placeholder="MT5" /></label>
                 <label>Nombre del tema<input required value={questionForm.topic_name} onChange={(e) => setQuestionForm({ ...questionForm, topic_name: e.target.value })} /></label>
-                <label>Dificultad<select value={questionForm.difficulty} onChange={(e) => setQuestionForm({ ...questionForm, difficulty: Number(e.target.value) })}><option value={1}>Nivel 1</option><option value={2}>Nivel 2</option><option value={3}>Nivel 3</option></select></label>
+                <label>Dificultad<select value={questionForm.difficulty} onChange={(e) => setQuestionForm({ ...questionForm, difficulty: Number(e.target.value) })}><option value={1}>Nivel 1</option><option value={2}>Nivel 2</option><option value={3}>Nivel 3</option><option value={4}>Nivel 4</option></select></label>
                 <label>Respuesta correcta<select value={questionForm.correct_option} onChange={(e) => setQuestionForm({ ...questionForm, correct_option: e.target.value as Question["correct_option"] })}><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
               </div>
-              <label>Enunciado<textarea required rows={4} value={questionForm.prompt} onChange={(e) => setQuestionForm({ ...questionForm, prompt: e.target.value })} /></label>
+              <label>Texto o caso de referencia<textarea rows={4} value={questionForm.stimulus} onChange={(e) => setQuestionForm({ ...questionForm, stimulus: e.target.value })} placeholder="Opcional: lectura, caso, tabla descrita o contexto compartido" /></label>\n              <label>Enunciado<textarea required rows={4} value={questionForm.prompt} onChange={(e) => setQuestionForm({ ...questionForm, prompt: e.target.value })} /></label>
               <div className="form-grid">
                 <label>Opción A<input required value={questionForm.option_a} onChange={(e) => setQuestionForm({ ...questionForm, option_a: e.target.value })} /></label>
                 <label>Opción B<input required value={questionForm.option_b} onChange={(e) => setQuestionForm({ ...questionForm, option_b: e.target.value })} /></label>
