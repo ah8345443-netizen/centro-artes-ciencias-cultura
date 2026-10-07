@@ -23,7 +23,7 @@ export default function RegistroPage() {
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: "https://exani-colima-2026.vercel.app/login",
+        emailRedirectTo: "https://plataforma-exani-colima.vercel.app/login",
       },
     });
 
