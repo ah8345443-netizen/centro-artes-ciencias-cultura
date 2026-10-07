@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createClient } from "../../lib/supabase/client";
 import LogoutButton from "../../components/logout-button";
 
-type Attempt = { is_correct: boolean; questions: { area: string } | null };
+type Attempt = { is_correct: boolean; questions: { area: string }[] | null };
 type Profile = { full_name: string; role: string; access_status: string; access_expires_at: string | null };
 
 export default function DashboardPage() {
@@ -32,7 +32,7 @@ export default function DashboardPage() {
   }, []);
 
   const areas = useMemo(() => ["CL","RI","MT"].map((code) => {
-    const rows=attempts.filter((a)=>a.questions?.area===code);
+    const rows=attempts.filter((a)=>a.questions?.[0]?.area===code);
     const correct=rows.filter((a)=>a.is_correct).length;
     return { code, total: rows.length, progress: rows.length ? Math.round(correct/rows.length*100) : 0 };
   }), [attempts]);
