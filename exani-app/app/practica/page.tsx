@@ -12,7 +12,7 @@ const groups = [
 export default function PracticaPage(){
   return <main className="app-bg"><PortalNav/><div className="app-shell">
     <section className="page-heading"><span className="eyebrow">Biblioteca de estudio</span><h1>Elige un tema y trabaja una sesión completa.</h1><p>Cada bloque combina reactivos autocorregibles con una progresión de dificultad. Los niveles N1–N4 van de fundamentos a argumentación y profundización.</p></section>
-    <section className="level-strip"><div><strong>N1</strong><span>Fundamentos</span></div><div><strong>N2</strong><span>Aplicación</span></div><div><strong>N3</strong><span>Integración</span></div><div><strong>N4</strong><span>Profundización</span></div></section>
+    <section className="level-strip"><div><strong>N1</strong><span>Fundamentos</span></div><div><strong>N2</strong><span>Aplicación</span></div><div><strong>N3</strong><span>Integración</span></div><div><strong>N4</strong><span>Profundización</span></div></section>\n    <a className="integrative-banner" href="/integradores"><div><span className="eyebrow light">Reto N4</span><h2>Problemas integradores</h2><p>8 situaciones abiertas para modelar, argumentar y comprobar.</p></div><strong>Entrar →</strong></a>
     <div className="curriculum-groups">
       {groups.map(g=><section className="curriculum-group" key={g.key}>
         <div className="curriculum-head"><span className={"area-icon "+g.className}>{g.key}</span><div><h2>{g.title}</h2><p>{g.description}</p></div></div>
