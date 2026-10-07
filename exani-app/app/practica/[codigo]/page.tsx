@@ -14,6 +14,10 @@ type Question = {
   option_b: string;
   option_c: string;
   option_d: string | null;
+};
+
+type Feedback = {
+  is_correct: boolean;
   correct_option: string;
   explanation: string | null;
 };
@@ -23,7 +27,7 @@ export default function TopicPracticePage({ params }: { params: Promise<{ codigo
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState("");
-  const [checked, setChecked] = useState(false);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
@@ -35,14 +39,12 @@ export default function TopicPracticePage({ params }: { params: Promise<{ codigo
     if (!topicCode) return;
     const load = async () => {
       const supabase = createClient();
-      const { data, error } = await supabase
-        .from("questions")
-        .select("*")
-        .eq("topic_code", topicCode)
-        .eq("is_active", true)
-        .order("difficulty", { ascending: true });
+      const { data, error } = await supabase.rpc("get_practice_questions", {
+        requested_topic: topicCode,
+        requested_limit: 100,
+      });
       if (error) setMessage("No fue posible cargar los reactivos.");
-      setQuestions((data ?? []) as Question[]);
+      setQuestions((data ?? []) as unknown as Question[]);
       setLoading(false);
     };
     load();
@@ -50,33 +52,26 @@ export default function TopicPracticePage({ params }: { params: Promise<{ codigo
 
   const q = questions[index];
   const options = useMemo(() => q ? [
-    ["A", q.option_a],
-    ["B", q.option_b],
-    ["C", q.option_c],
-    ["D", q.option_d],
+    ["A", q.option_a], ["B", q.option_b], ["C", q.option_c], ["D", q.option_d],
   ].filter(([, value]) => Boolean(value)) : [], [q]);
 
   async function checkAnswer() {
     if (!q || !selected) return;
     const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      window.location.href = "/login";
+    const { data, error } = await supabase.rpc("submit_question_answer", {
+      requested_question_id: q.id,
+      requested_option: selected,
+    });
+    if (error || !data?.[0]) {
+      setMessage("No fue posible guardar tu respuesta.");
       return;
     }
-    const correct = selected === q.correct_option;
-    await supabase.from("attempts").insert({
-      user_id: user.id,
-      question_id: q.id,
-      selected_option: selected,
-      is_correct: correct,
-    });
-    setChecked(true);
+    setFeedback(data[0] as unknown as Feedback);
   }
 
   function next() {
     setSelected("");
-    setChecked(false);
+    setFeedback(null);
     setIndex((i) => Math.min(i + 1, questions.length - 1));
   }
 
@@ -89,31 +84,20 @@ export default function TopicPracticePage({ params }: { params: Promise<{ codigo
         <div className="question-meta"><span>{q.code}</span><span>Nivel {q.difficulty}</span><span>{index + 1}/{questions.length}</span></div>
         <h1 className="question-title">{q.topic_name}</h1>
         <p className="question-prompt">{q.prompt}</p>
-
         <div className="options">
           {options.map(([letter, value]) => (
-            <button
-              key={letter}
-              type="button"
-              className={`option ${selected === letter ? "selected" : ""}`}
-              onClick={() => !checked && setSelected(letter as string)}
-            >
+            <button key={letter} type="button" className={`option ${selected === letter ? "selected" : ""}`} onClick={() => !feedback && setSelected(letter as string)}>
               <strong>{letter}</strong><span>{value}</span>
             </button>
           ))}
         </div>
-
-        {!checked ? (
+        {!feedback ? (
           <button className="button primary full" disabled={!selected} onClick={checkAnswer}>Comprobar respuesta</button>
         ) : (
-          <div className={selected === q.correct_option ? "feedback correct" : "feedback incorrect"}>
-            <strong>{selected === q.correct_option ? "Correcto" : `Respuesta correcta: ${q.correct_option}`}</strong>
-            <p>{q.explanation ?? "Revisa el procedimiento y vuelve a intentarlo."}</p>
-            {index < questions.length - 1 ? (
-              <button className="button primary" onClick={next}>Siguiente reactivo</button>
-            ) : (
-              <a className="button primary" href="/resultados">Ver resultados</a>
-            )}
+          <div className={feedback.is_correct ? "feedback correct" : "feedback incorrect"}>
+            <strong>{feedback.is_correct ? "Correcto" : `Respuesta correcta: ${feedback.correct_option}`}</strong>
+            <p>{feedback.explanation ?? "Revisa el procedimiento y vuelve a intentarlo."}</p>
+            {index < questions.length - 1 ? <button className="button primary" onClick={next}>Siguiente reactivo</button> : <a className="button primary" href="/resultados">Ver resultados</a>}
           </div>
         )}
         {message && <p className="error">{message}</p>}
