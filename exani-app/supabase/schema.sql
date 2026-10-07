@@ -12,7 +12,7 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   full_name text not null,
   role public.user_role not null default 'student',
-  access_status public.access_status not null default 'active',
+  access_status public.access_status not null default 'blocked',
   course text,
   access_expires_at timestamptz,
   created_at timestamptz not null default now()

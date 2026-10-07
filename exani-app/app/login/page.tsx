@@ -40,7 +40,7 @@ export default function LoginPage() {
         <button className="button primary full" disabled={loading}>
           {loading ? "Entrando..." : "Entrar"}
         </button>
-        <a className="text-link" href="/">Volver al inicio</a>
+        <a className="text-link" href="/registro">Crear cuenta</a>\n        <a className="text-link" href="/">Volver al inicio</a>
       </form>
     </main>
   );
