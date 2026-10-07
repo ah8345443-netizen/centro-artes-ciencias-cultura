@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Plataforma EXANI 2026",
-  description: "Preparación EXANI I y EXANI II del Centro de Artes, Ciencias y Cultura",
+  title: "EXANI Colima 2026 | Plataforma de preparación",
+  description: "Plataforma de preparación EXANI I y EXANI II con práctica progresiva, simulaciones aleatorias y seguimiento del aprendizaje.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
