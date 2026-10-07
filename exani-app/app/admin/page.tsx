@@ -46,10 +46,27 @@ type Summary = {
   accuracy: number;
 };
 
-const emptyQuestion = {
+type QuestionForm = {
+  id: string;
+  code: string;
+  area: "CL" | "RI" | "MT";
+  topic_code: string;
+  topic_name: string;
+  difficulty: number;
+  prompt: string;
+  option_a: string;
+  option_b: string;
+  option_c: string;
+  option_d: string;
+  correct_option: "A" | "B" | "C" | "D";
+  explanation: string;
+  is_active: boolean;
+};
+
+const emptyQuestion: QuestionForm = {
   id: "",
   code: "",
-  area: "MT" as const,
+  area: "MT",
   topic_code: "",
   topic_name: "",
   difficulty: 1,
@@ -58,7 +75,7 @@ const emptyQuestion = {
   option_b: "",
   option_c: "",
   option_d: "",
-  correct_option: "A" as const,
+  correct_option: "A",
   explanation: "",
   is_active: true,
 };
@@ -85,7 +102,7 @@ export default function AdminPage() {
     access_expires_at: "",
   });
 
-  const [questionForm, setQuestionForm] = useState({ ...emptyQuestion });
+  const [questionForm, setQuestionForm] = useState<QuestionForm>({ ...emptyQuestion });
 
   async function load() {
     setLoading(true);
