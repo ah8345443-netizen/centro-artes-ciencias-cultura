@@ -1,0 +1,28 @@
+name: EXANI Build Check
+
+on:
+  push:
+    branches: [exani-platform-v1]
+    paths:
+      - "exani-app/**"
+      - ".github/workflows/exani-build.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: exani-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: exani-app/package-lock.json
+      - run: npm install
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://wwftecggpfdalbmzjcdd.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_FGJj4hpZEnhS__WI0mif1Q_xn6McSQn
