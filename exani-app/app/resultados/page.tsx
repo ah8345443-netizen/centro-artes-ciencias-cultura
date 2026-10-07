@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createClient } from "../../lib/supabase/client";
 
-type Attempt = { is_correct: boolean; questions: { area: string; topic_code: string; topic_name: string } | null };
+type Attempt = { is_correct: boolean; questions: { area: string; topic_code: string; topic_name: string }[] | null };
 
 export default function ResultadosPage() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);
@@ -22,7 +22,7 @@ export default function ResultadosPage() {
   const summary=useMemo(()=>{
     const map:Record<string,{total:number;correct:number}>={};
     for(const a of attempts){
-      const area=a.questions?.area ?? "Otro";
+      const area=a.questions?.[0]?.area ?? "Otro";
       map[area] ??= {total:0,correct:0};
       map[area].total++;
       if(a.is_correct) map[area].correct++;
