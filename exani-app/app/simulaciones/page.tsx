@@ -6,7 +6,7 @@ const modes=[
   {mode:"standard",badge:"30 reactivos",title:"Simulación estándar",desc:"La sesión principal de práctica con distribución inspirada en la evaluación final de la guía.",mix:"10 MT · 6 CL · 8 RI · 6 CI",time:"45–55 min",tone:"standard"},
   {mode:"intensive",badge:"50 reactivos",title:"Simulación intensiva",desc:"Entrenamiento largo para resistencia, concentración y control del tiempo.",mix:"20 MT · 10 CL · 10 RI · 10 CI",time:"75–90 min",tone:"intensive"},
   {mode:"math",badge:"30 reactivos",title:"Reto matemático",desc:"Sesión exclusiva de matemáticas con temas mezclados y selección aleatoria.",mix:"29 temas disponibles",time:"45–60 min",tone:"math"},
-  {mode:"advanced",badge:"24 reactivos",title:"Nivel avanzado",desc:"Prioriza reactivos N3 y N4 para exigir integración, interpretación y argumentación.",mix:"N3–N4 · todas las áreas",time:"40–55 min",tone:"advanced"}
+  {mode:"advanced",badge:"24 reactivos",title:"Nivel avanzado",desc:"Prioriza reactivos N3 y de mayor exigencia para integración e interpretación. Los retos N4 abiertos están en Problemas integradores.",mix:"N3 · alta exigencia · todas las áreas",time:"40–55 min",tone:"advanced"}
 ];
 
 export default function SimulacionesPage(){
