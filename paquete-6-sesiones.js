@@ -76,7 +76,7 @@ d.notes?"Necesidad o comentario: "+d.notes:"",
 "¿Hay cupo? Quisiera confirmar el grupo, las fechas y la forma de pago."
 ].filter(function(s){return s!==null});
 var url="https://wa.me/"+WA+"?text="+encodeURIComponent(lines.join("\n"));
-var popup=window.open(url,"_blank","noopener,noreferrer");if(!popup)window.location.href=url;
+window.location.href=url;
 });
 function escaped(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 document.getElementById("printPlan").addEventListener("click",function(){
