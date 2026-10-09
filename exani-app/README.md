@@ -1,23 +1,22 @@
-# Plataforma EXANI 2026
+# Simulador de Evaluación Académica
 
-Aplicación independiente para el Centro de Artes, Ciencias y Cultura.
+Aplicación educativa independiente para el Centro de Artes, Ciencias y Cultura.
 
-## Estado
+## Funcionalidad
 - Next.js 16.4 + React 19.3
 - Supabase conectado
-- Auth por correo/contraseña
-- RLS habilitado
-- Práctica por CL, RI y MT
-- Simulacro con registro de intentos
-- Resultados por área
-- Panel administrativo preparado
+- Autenticación por correo y contraseña
+- Acceso protegido mediante RLS
+- Evaluaciones aleatorias por materia
+- Evaluaciones configurables por cantidad y dificultad
+- Práctica por temas
+- Matemáticas, Comprensión lectora, Redacción y lenguaje, Pensamiento científico
+- Resultados por área y tema
+- Panel administrativo para usuarios y reactivos
+- Actividades de desarrollo y retos de profundización
 - PWA básica
-- GitHub Actions para verificación de build
 
-## Supabase
-Proyecto configurado: `exani-colima-2026`.
-
-Variables requeridas:
+## Variables de entorno
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 
@@ -28,11 +27,7 @@ No guardar claves secretas o service role en el repositorio.
 2. Crear `.env.local` a partir de `.env.example`
 3. `npm run dev`
 
-## Vercel
-Crear un proyecto separado apuntando a este mismo repositorio y establecer:
-
-**Root Directory:** `exani-app`
-
-Agregar las dos variables públicas de Supabase en Environment Variables.
+## Despliegue
+La aplicación se despliega en Vercel como proyecto independiente del sitio principal del Centro.
 
 El sitio principal del Centro permanece en la raíz del repositorio y no debe sustituirse.
