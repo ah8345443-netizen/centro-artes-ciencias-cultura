@@ -14,7 +14,7 @@ export default function PortalNav() {
   return (
     <header className="portal-nav">
       <a className="portal-brand" href="/dashboard">
-        <span className="brand-mark">E</span>
+        <span className="brand-mark">S</span>
         <span><strong>Simulador Académico</strong><small>Centro de Artes, Ciencias y Cultura</small></span>
       </a>
       <nav>
