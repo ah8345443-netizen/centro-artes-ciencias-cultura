@@ -59,7 +59,7 @@ export default function TopicPracticePage({params}:{params:Promise<{codigo:strin
   function next(){setSelected("");setFeedback(null);setMessage("");setIndex(v=>v+1)}
 
   if(loading)return <main className="app-bg"><PortalNav/><div className="app-shell narrow"><section className="panel"><p>Cargando sesión...</p></section></div></main>;
-  if(!questions.length&&!exercises.length)return <main className="app-bg"><PortalNav/><div className="app-shell narrow"><section className="panel"><span className="eyebrow">{topicCode}</span><h1>Tema en preparación</h1><p>Aún no hay actividades cargadas para este código.</p><a className="button secondary" href="/practica">Volver al temario</a></section></div></main>;
+  if(!questions.length&&!exercises.length)return <main className="app-bg"><PortalNav/><div className="app-shell narrow"><section className="panel"><span className="eyebrow">{topicCode}</span><h1>Tema en preparación</h1><p>Aún no hay actividades cargadas para este código.</p><a className="button secondary" href="/practica">Volver a materias</a></section></div></main>;
 
   if(finished)return <main className="app-bg"><PortalNav/><div className="app-shell">
     <section className="result-hero compact-result"><span className="eyebrow light">Sesión completada · {topicCode}</span><h1>{answered?Math.round(correct/answered*100):0}%</h1><p>{correct} aciertos de {answered} reactivos. La próxima vez el orden cambiará.</p><div className="actions"><a className="button light-button" href={"/practica/"+topicCode.toLowerCase()}>Nueva sesión</a><a className="button hero-secondary" href="/practica">Otro tema</a></div></section>
@@ -67,7 +67,7 @@ export default function TopicPracticePage({params}:{params:Promise<{codigo:strin
   </div></main>;
 
   return <main className="app-bg"><PortalNav/><div className="app-shell">
-    <div className="topic-session-head"><div><span className="eyebrow">Sesión por tema · {topicCode}</span><h1>{q?.topic_name??topicCode}</h1><p>Reactivos en orden aleatorio con retroalimentación inmediata.</p></div><div className="session-score"><span>Avance</span><strong>{index+1}/{questions.length}</strong><small>{correct} correctos</small></div></div>
+    <div className="topic-session-head"><div><span className="eyebrow">Sesión por tema · {topicCode}</span><h1>{q?.topic_name??topicCode}</h1><p>Reactivos en orden aleatorio con retroalimentación inmediata.</p>{q&&<a className="button secondary topic-eval-button" href={"/simulacro?materia="+q.area+"&tema="+topicCode+"&cantidad=10}>Evaluar este tema</a>}</div><div className="session-score"><span>Avance</span><strong>{index+1}/{questions.length}</strong><small>{correct} correctos</small></div></div>
 
     <div className="topic-session-layout">
       <section className="exam-question practice-question">
