@@ -67,7 +67,7 @@ export default function TopicPracticePage({params}:{params:Promise<{codigo:strin
   </div></main>;
 
   return <main className="app-bg"><PortalNav/><div className="app-shell">
-    <div className="topic-session-head"><div><span className="eyebrow">Sesión por tema · {topicCode}</span><h1>{q?.topic_name??topicCode}</h1><p>Reactivos en orden aleatorio con retroalimentación inmediata.</p>{q&&<a className="button secondary topic-eval-button" href={"/simulacro?materia="+q.area+"&tema="+topicCode+"&cantidad=10}>Evaluar este tema</a>}</div><div className="session-score"><span>Avance</span><strong>{index+1}/{questions.length}</strong><small>{correct} correctos</small></div></div>
+    <div className="topic-session-head"><div><span className="eyebrow">Sesión por tema · {topicCode}</span><h1>{q?.topic_name??topicCode}</h1><p>Reactivos en orden aleatorio con retroalimentación inmediata.</p>{q&&<a className="button secondary topic-eval-button" href={"/simulacro?materia="+q.area+"&tema="+topicCode+"&cantidad=10"}>Evaluar este tema</a>}</div><div className="session-score"><span>Avance</span><strong>{index+1}/{questions.length}</strong><small>{correct} correctos</small></div></div>
 
     <div className="topic-session-layout">
       <section className="exam-question practice-question">
