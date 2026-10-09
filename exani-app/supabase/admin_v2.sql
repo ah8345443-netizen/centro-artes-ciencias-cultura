@@ -12,7 +12,7 @@ alter table public.profiles
 
 alter table public.profiles
   add constraint profiles_course_check
-  check (course is null or course in ('EXANI I', 'EXANI II', 'AMBOS'));
+  check (course is null or course in ('GENERAL', 'PRIMARIA', 'SECUNDARIA', 'BACHILLERATO'));
 
 create unique index if not exists profiles_email_unique_idx
   on public.profiles (lower(email))

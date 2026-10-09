@@ -9,7 +9,7 @@ type Profile = {
   email: string | null;
   role: "admin" | "teacher" | "student";
   access_status: "active" | "blocked" | "expired";
-  course: "EXANI I" | "EXANI II" | "AMBOS" | null;
+  course: "GENERAL" | "PRIMARIA" | "SECUNDARIA" | "BACHILLERATO" | null;
   access_expires_at: string | null;
 };
 
@@ -100,7 +100,7 @@ export default function AdminPage() {
     full_name: "",
     email: "",
     password: "",
-    course: "EXANI II",
+    course: "GENERAL",
     access_status: "active",
     access_expires_at: "",
   });
@@ -203,7 +203,7 @@ export default function AdminPage() {
     }
 
     setSuccess("Alumno creado. Ya puede iniciar sesión con el correo y contraseña temporal.");
-    setNewUser({ full_name: "", email: "", password: "", course: "EXANI II", access_status: "active", access_expires_at: "" });
+    setNewUser({ full_name: "", email: "", password: "", course: "GENERAL", access_status: "active", access_expires_at: "" });
     setShowNewUser(false);
     await load();
   }
@@ -314,10 +314,10 @@ export default function AdminPage() {
       <div className="topbar">
         <div>
           <p className="eyebrow">Administración</p>
-          <h1 className="admin-heading">Plataforma EXANI</h1>
-          <p className="muted-large">Gestiona alumnos, reactivos y resultados desde un solo lugar.</p>
+          <h1 className="admin-heading">Simulador Académico</h1>
+          <p className="muted-large">Gestiona usuarios, materias, reactivos y resultados desde un solo lugar.</p>
         </div>
-        <div className="actions compact"><a className="button secondary" href="/admin/docentes">Docentes</a><a className="button secondary" href="/dashboard">Volver al panel</a></div>
+        <a className="button secondary" href="/dashboard">Volver al panel</a>
       </div>
 
       <section className="admin-tabs" aria-label="Secciones de administración">
@@ -342,7 +342,7 @@ export default function AdminPage() {
       {tab === "users" && (
         <>
           <div className="section-bar">
-            <div><h2>Alumnos y accesos</h2><p>Asigna curso, estado y vencimiento.</p></div>
+            <div><h2>Alumnos y accesos</h2><p>Asigna nivel educativo, estado y vencimiento.</p></div>
             <button className="button primary" onClick={() => setShowNewUser((v) => !v)}>
               {showNewUser ? "Cancelar" : "Nuevo alumno"}
             </button>
@@ -355,7 +355,7 @@ export default function AdminPage() {
                 <label>Nombre completo<input required value={newUser.full_name} onChange={(e) => setNewUser({ ...newUser, full_name: e.target.value })} /></label>
                 <label>Correo<input type="email" required value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} /></label>
                 <label>Contraseña temporal<input type="password" minLength={8} required value={newUser.password} onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} /></label>
-                <label>Curso<select value={newUser.course} onChange={(e) => setNewUser({ ...newUser, course: e.target.value })}><option>EXANI I</option><option>EXANI II</option><option>AMBOS</option></select></label>
+                <label>Nivel<select value={newUser.course} onChange={(e) => setNewUser({ ...newUser, course: e.target.value })}><option value="GENERAL">General</option><option value="PRIMARIA">Primaria</option><option value="SECUNDARIA">Secundaria</option><option value="BACHILLERATO">Bachillerato</option></select></label>
                 <label>Estado<select value={newUser.access_status} onChange={(e) => setNewUser({ ...newUser, access_status: e.target.value })}><option value="active">Activo</option><option value="blocked">Bloqueado</option></select></label>
                 <label>Vence<input type="date" value={newUser.access_expires_at} onChange={(e) => setNewUser({ ...newUser, access_expires_at: e.target.value })} /></label>
               </div>
@@ -377,7 +377,7 @@ export default function AdminPage() {
                 <div className="admin-user-controls">
                   <label>Curso
                     <select disabled={u.role === "admin"} value={u.course ?? ""} onChange={(e) => patchProfile(u.id, { course: (e.target.value || null) as Profile["course"] })}>
-                      <option value="">Sin asignar</option><option value="EXANI I">EXANI I</option><option value="EXANI II">EXANI II</option><option value="AMBOS">Ambos</option>
+                      <option value="">Sin asignar</option><option value="GENERAL">General</option><option value="PRIMARIA">Primaria</option><option value="SECUNDARIA">Secundaria</option><option value="BACHILLERATO">Bachillerato</option>
                     </select>
                   </label>
                   <label>Estado

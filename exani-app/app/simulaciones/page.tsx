@@ -1,18 +1,54 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { createClient } from "../../lib/supabase/client";
 import PortalNav from "../../components/portal-nav";
 
-const modes=[
-  {mode:"quick",badge:"12 reactivos",title:"Simulación rápida",desc:"Una sesión corta para estudiar sin perder continuidad.",mix:"5 MT · 3 CL · 2 RI · 2 CI",time:"15–20 min",tone:"quick"},
-  {mode:"diagnostic",badge:"24 reactivos",title:"Diagnóstico aleatorio",desc:"Una fotografía inicial equilibrada para decidir qué reforzar primero.",mix:"12 MT · 4 CL · 4 RI · 4 CI",time:"35–40 min",tone:"diagnostic"},
-  {mode:"standard",badge:"30 reactivos",title:"Simulación estándar",desc:"La sesión principal de práctica con distribución inspirada en la evaluación final de la guía.",mix:"10 MT · 6 CL · 8 RI · 6 CI",time:"45–55 min",tone:"standard"},
-  {mode:"intensive",badge:"50 reactivos",title:"Simulación intensiva",desc:"Entrenamiento largo para resistencia, concentración y control del tiempo.",mix:"20 MT · 10 CL · 10 RI · 10 CI",time:"75–90 min",tone:"intensive"},
-  {mode:"math",badge:"30 reactivos",title:"Reto matemático",desc:"Sesión exclusiva de matemáticas con temas mezclados y selección aleatoria.",mix:"29 temas disponibles",time:"45–60 min",tone:"math"},
-  {mode:"advanced",badge:"24 reactivos",title:"Nivel avanzado",desc:"Prioriza reactivos N3 y de mayor exigencia para integración e interpretación. Los retos N4 abiertos están en Problemas integradores.",mix:"N3 · alta exigencia · todas las áreas",time:"40–55 min",tone:"advanced"}
-];
+type Subject={area:string;subject_name:string;question_count:number;topic_count:number;open_activity_count:number};
+
+const meta:Record<string,{className:string;description:string}> = {
+  MT:{className:"math",description:"Aritmética, álgebra, funciones, geometría, estadística y probabilidad."},
+  CL:{className:"reading",description:"Comprensión, inferencia, intención, relaciones textuales y evaluación de evidencia."},
+  RI:{className:"writing",description:"Coherencia, conectores, registro, concordancia, ortografía y puntuación."},
+  CI:{className:"science",description:"Hipótesis, variables, diseño experimental, datos y conclusiones."},
+};
 
 export default function SimulacionesPage(){
- return <main className="app-bg"><PortalNav/><div className="app-shell">
-  <section className="page-heading split-heading"><div><span className="eyebrow">Centro de simulaciones</span><h1>Cada intento es diferente.</h1><p>El sistema crea una nueva combinación aleatoria desde el banco activo. No estudias un examen fijo: entrenas la habilidad de resolver situaciones nuevas.</p></div><div className="random-badge"><strong>Selección aleatoria</strong><span>Nuevo orden y combinación en cada sesión</span></div></section>
-  <section className="simulation-grid">{modes.map(m=><article className={"simulation-card "+m.tone} key={m.mode}><div className="simulation-top"><span>{m.badge}</span><small>{m.time}</small></div><h2>{m.title}</h2><p>{m.desc}</p><div className="simulation-mix">{m.mix}</div><a className="button primary full" href={"/simulacro?modo="+m.mode}>Comenzar</a></article>)}</section>
-  <section className="simulation-note"><strong>¿Cuál elegir?</strong><p>Si es tu primera vez, comienza con <b>Diagnóstico aleatorio</b>. Para seguimiento regular usa <b>Simulación estándar</b>. Si ya dominas lo básico, usa <b>Nivel avanzado</b>.</p></section>
- </div></main>
+  const [subjects,setSubjects]=useState<Subject[]>([]);
+  const [loading,setLoading]=useState(true);
+
+  useEffect(()=>{(async()=>{
+    const supabase=createClient();
+    const {data}=await supabase.rpc("subject_catalog");
+    setSubjects((data??[]) as unknown as Subject[]);
+    setLoading(false);
+  })()},[]);
+
+  return <main className="app-bg"><PortalNav/><div className="app-shell">
+    <section className="page-heading split-heading">
+      <div><span className="eyebrow">Simulador de evaluación</span><h1>Primero elige una materia.</h1><p>Después podrás seleccionar la cantidad de reactivos y el nivel. Cada evaluación se construye aleatoriamente, por lo que un nuevo intento no repite necesariamente la misma combinación.</p></div>
+      <div className="random-badge"><strong>Selección aleatoria</strong><span>Evaluaciones diferentes en cada intento</span></div>
+    </section>
+
+    {loading?<section className="panel"><p>Cargando materias...</p></section>:<section className="subject-evaluation-grid">
+      {subjects.map(s=><article className="subject-evaluation-card" key={s.area}>
+        <div className="subject-evaluation-head">
+          <span className={"area-icon "+meta[s.area].className}>{s.area}</span>
+          <div><h2>{s.subject_name}</h2><p>{meta[s.area].description}</p></div>
+        </div>
+        <div className="subject-stats"><span><strong>{s.question_count}</strong> reactivos</span><span><strong>{s.topic_count}</strong> temas</span><span><strong>{s.open_activity_count}</strong> actividades abiertas</span></div>
+        <div className="evaluation-actions">
+          <a className="button secondary" href={"/simulacro?materia="+s.area+"&cantidad=10"}>10 reactivos</a>
+          <a className="button secondary" href={"/simulacro?materia="+s.area+"&cantidad=20"}>20 reactivos</a>
+          <a className="button primary" href={"/simulacro?materia="+s.area+"&cantidad=30"}>Evaluación amplia</a>
+        </div>
+        <a className="text-button block" href={"/practica#"+s.area}>Ver temas de esta materia →</a>
+      </article>)}
+    </section>}
+
+    <section className="mixed-evaluation">
+      <div><span className="eyebrow light">Evaluación general</span><h2>Combinar todas las materias</h2><p>Genera una evaluación aleatoria con reactivos de las cuatro áreas.</p></div>
+      <a className="button light-button" href="/simulacro?materia=ALL&cantidad=30">Crear evaluación mixta</a>
+    </section>
+  </div></main>
 }

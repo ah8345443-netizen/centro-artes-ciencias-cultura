@@ -25,7 +25,7 @@ export async function proxy(request: NextRequest) {
 
   const { data } = await supabase.auth.getClaims();
   const hasIdentity = Boolean(data?.claims?.sub);
-  const protectedPath = ["/dashboard", "/practica", "/simulaciones", "/simulacro", "/integradores", "/resultados", "/docente", "/admin"]
+  const protectedPath = ["/dashboard", "/practica", "/simulaciones", "/simulacro", "/integradores", "/resultados", "/admin"]
     .some((path) => request.nextUrl.pathname.startsWith(path));
 
   if (protectedPath && !hasIdentity) {

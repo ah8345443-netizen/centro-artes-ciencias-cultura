@@ -57,14 +57,14 @@ export default function DashboardPage() {
     <div className="app-shell">
       <section className="dashboard-hero">
         <div><span className="eyebrow light">Tu espacio de preparación</span><h1>Hola, {firstName}.</h1><p>Hoy puedes practicar un tema concreto o medir tu desempeño con una simulación nueva.</p>
-          <div className="actions"><a className="button light-button" href="/simulaciones">Iniciar simulación</a><a className="button hero-secondary" href="/practica">Explorar temario</a></div>
+          <div className="actions"><a className="button light-button" href="/simulaciones">Crear evaluación</a><a className="button hero-secondary" href="/practica">Explorar temario</a></div>
         </div>
-        <div className="hero-account"><span>Plan asignado</span><strong>{profile.course??"Preparación general"}</strong><small>{attempts.length} respuestas registradas</small></div>
+        <div className="hero-account"><span>Nivel asignado</span><strong>{profile.course??"General"}</strong><small>{attempts.length} respuestas registradas</small></div>
       </section>
 
       <div className="dashboard-toolbar">
         <div><span className="eyebrow">Resumen</span><h2>Tu desempeño por área</h2></div>
-        <div className="actions compact">{profile.role==="admin"&&<a className="button secondary" href="/admin">Administración</a>}{profile.role==="teacher"&&<a className="button secondary" href="/docente">Panel docente</a>}<LogoutButton/></div>
+        <div className="actions compact">{profile.role==="admin"&&<a className="button secondary" href="/admin">Administración</a>}<LogoutButton/></div>
       </div>
 
       <section className="area-progress-grid">
@@ -89,10 +89,10 @@ export default function DashboardPage() {
       </section>
 
       <section className="recent-section">
-        <div className="section-bar"><div><span className="eyebrow">Historial</span><h2>Simulaciones recientes</h2></div><a className="text-button" href="/resultados">Ver todos los resultados →</a></div>
+        <div className="section-bar"><div><span className="eyebrow">Historial</span><h2>Evaluaciones recientes</h2></div><a className="text-button" href="/resultados">Ver todos los resultados →</a></div>
         <div className="recent-list">
           {sessions.map(s=><article key={s.id}><div><strong>{s.title}</strong><span>{new Date(s.created_at).toLocaleDateString("es-MX")}</span></div><div><strong>{s.completed_at&&s.score!=null?s.score+"/"+s.question_count:"En progreso"}</strong><span>{s.question_count} reactivos</span></div></article>)}
-          {!sessions.length&&<div className="empty-state">Aún no has realizado simulaciones. Empieza con una sesión rápida o diagnóstica.</div>}
+          {!sessions.length&&<div className="empty-state">Aún no has realizado evaluaciones. Elige una materia para comenzar.</div>}
         </div>
       </section>
     </div>
