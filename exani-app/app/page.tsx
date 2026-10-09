@@ -18,7 +18,7 @@ export default function HomePage() {
             <a className="button primary large" href="/login">Entrar al simulador</a>
             <a className="button ghost large" href="#materias">Ver materias</a>
           </div>
-          <div className="trust-line"><span>232 reactivos autocorregibles</span><span>456 actividades activas</span><span>4 niveles de dificultad</span></div>
+          <div className="trust-line"><span>424 reactivos autocorregibles</span><span>648 actividades activas</span><span>4 niveles de dificultad</span></div>
         </div>
         <div className="hero-visual">
           <div className="visual-card visual-main">
@@ -33,8 +33,8 @@ export default function HomePage() {
       </section>
 
       <section className="landing-stats">
-        <article><strong>456</strong><span>actividades disponibles</span></article>
-        <article><strong>232</strong><span>reactivos autocorregibles</span></article>
+        <article><strong>648</strong><span>actividades disponibles</span></article>
+        <article><strong>424</strong><span>reactivos autocorregibles</span></article>
         <article><strong>4</strong><span>materias principales</span></article>
         <article><strong>N1–N4</strong><span>niveles de dificultad</span></article>
       </section>
