@@ -64,7 +64,7 @@ export default function DashboardPage() {
 
       <div className="dashboard-toolbar">
         <div><span className="eyebrow">Resumen</span><h2>Tu desempeño por área</h2></div>
-        <div className="actions compact">{profile.role==="admin"&&<a className="button secondary" href="/admin">Administración</a>}{profile.role==="teacher"&&<a className="button secondary" href="/docente">Panel docente</a>}<LogoutButton/></div>
+        <div className="actions compact">{profile.role==="admin"&&<a className="button secondary" href="/admin">Administración</a>}<LogoutButton/></div>
       </div>
 
       <section className="area-progress-grid">
