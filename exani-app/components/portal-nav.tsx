@@ -4,8 +4,8 @@ import { usePathname } from "next/navigation";
 
 const links = [
   ["/dashboard", "Inicio"],
-  ["/simulaciones", "Simulaciones"],
-  ["/practica", "Temario"],
+  ["/simulaciones", "Evaluaciones"],
+  ["/practica", "Materias"],
   ["/resultados", "Resultados"],
 ];
 
@@ -15,7 +15,7 @@ export default function PortalNav() {
     <header className="portal-nav">
       <a className="portal-brand" href="/dashboard">
         <span className="brand-mark">E</span>
-        <span><strong>EXANI Colima</strong><small>Preparación 2026</small></span>
+        <span><strong>Simulador Académico</strong><small>Centro de Artes, Ciencias y Cultura</small></span>
       </a>
       <nav>
         {links.map(([href,label]) => (
