@@ -23,7 +23,7 @@ export default function RegistroPage() {
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: "https://plataforma-exani-colima.vercel.app/login",
+        emailRedirectTo: "https://simulador-evaluacion-academica.vercel.app/login",
       },
     });
 
@@ -45,7 +45,7 @@ export default function RegistroPage() {
   return (
     <main className="shell narrow">
       <form className="panel" onSubmit={handleSubmit}>
-        <p className="eyebrow">Registro de estudiantes</p>
+        <p className="eyebrow">Registro de usuarios</p>
         <h1>Crear cuenta</h1>
         <p>Tu cuenta se crea bloqueada. Un administrador debe activarla antes de que puedas acceder a los reactivos.</p>
 
