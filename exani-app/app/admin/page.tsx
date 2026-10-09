@@ -317,7 +317,7 @@ export default function AdminPage() {
           <h1 className="admin-heading">Plataforma EXANI</h1>
           <p className="muted-large">Gestiona alumnos, reactivos y resultados desde un solo lugar.</p>
         </div>
-        <div className="actions compact"><a className="button secondary" href="/admin/docentes">Docentes</a><a className="button secondary" href="/dashboard">Volver al panel</a></div>
+        <a className="button secondary" href="/dashboard">Volver al panel</a>
       </div>
 
       <section className="admin-tabs" aria-label="Secciones de administración">
